@@ -7,14 +7,14 @@ services:
     links:
       - fpm
     volumes:
-      - ../web/baba:/var/www/web
+      - ../src/project:/var/www/web
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
   fpm:
     build: php-fpm/
     links:
       - mysql
     volumes:
-      - ../web/baba:/var/www/web
+      - ../src/project:/var/www/web
   mysql:
     image: mysql
     ports:
@@ -32,5 +32,5 @@ services:
       - mysql
     build: symfony/
     volumes: 
-      - ../web/baba:/var/www/web
+      - ../src/project:/var/www/web
     tty: true
